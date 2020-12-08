@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE coverage SYSTEM 'http://cobertura.sourceforge.net/xml/coverage-04.dtd'>
+<coverage line-rate="1.0" branch-rate="0.9" lines-covered="13" lines-valid="13" branches-covered="9" branches-valid="10" complexity="0.0" timestamp="1607440920" version="gcovr 4.2">
+  <sources>
+    <source>/Users/a-cherepkov/hw_nikita/TechProgTemplates/task5/src</source>
+  </sources>
+  <packages>
+    <package name="01-simple-library" line-rate="1.0" branch-rate="0.9" complexity="0.0">
+      <classes>
+        <class name="Functions_cpp" filename="01-simple-library/Functions.cpp" line-rate="1.0" branch-rate="0.9" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="4" hits="9" branch="false"/>
+            <line number="5" hits="9" branch="false"/>
+            <line number="8" hits="24" branch="false"/>
+            <line number="9" hits="24" branch="true" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100%"/>
+              </conditions>
+            </line>
+            <line number="10" hits="3" branch="true" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+            <line number="13" hits="21" branch="true" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100%"/>
+              </conditions>
+            </line>
+            <line number="14" hits="12" branch="true" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100%"/>
+              </conditions>
+            </line>
+            <line number="15" hits="6" branch="true" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100%"/>
+              </conditions>
+            </line>
+            <line number="16" hits="3" branch="false"/>
+            <line number="18" hits="3" branch="false"/>
+            <line number="21" hits="6" branch="false"/>
+            <line number="25" hits="9" branch="false"/>
+            <line number="26" hits="21" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

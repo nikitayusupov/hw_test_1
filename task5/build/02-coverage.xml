@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE coverage SYSTEM 'http://cobertura.sourceforge.net/xml/coverage-04.dtd'>
+<coverage line-rate="1.0" branch-rate="0.5675675675675675" lines-covered="21" lines-valid="21" branches-covered="42" branches-valid="74" complexity="0.0" timestamp="1607440922" version="gcovr 4.2">
+  <sources>
+    <source>/Users/a-cherepkov/hw_nikita/TechProgTemplates/task5/src</source>
+  </sources>
+  <packages>
+    <package name="02-tree" line-rate="1.0" branch-rate="0.5675675675675675" complexity="0.0">
+      <classes>
+        <class name="Tree_cpp" filename="02-tree/Tree.cpp" line-rate="1.0" branch-rate="0.5675675675675675" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="10" hits="24" branch="false"/>
+            <line number="11" hits="24" branch="false"/>
+            <line number="12" hits="24" branch="true" condition-coverage="66% (4/6)">
+              <conditions>
+                <condition number="0" type="jump" coverage="66%"/>
+              </conditions>
+            </line>
+            <line number="13" hits="4" branch="true" condition-coverage="50% (2/4)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+            <line number="16" hits="20" branch="true" condition-coverage="66% (4/6)">
+              <conditions>
+                <condition number="0" type="jump" coverage="66%"/>
+              </conditions>
+            </line>
+            <line number="17" hits="4" branch="true" condition-coverage="50% (2/4)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+            <line number="19" hits="16" branch="true" condition-coverage="50% (4/8)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+            <line number="20" hits="16" branch="false"/>
+            <line number="21" hits="40" branch="true" condition-coverage="57% (8/14)">
+              <conditions>
+                <condition number="0" type="jump" coverage="57%"/>
+              </conditions>
+            </line>
+            <line number="22" hits="24" branch="true" condition-coverage="75% (3/4)">
+              <conditions>
+                <condition number="0" type="jump" coverage="75%"/>
+              </conditions>
+            </line>
+            <line number="23" hits="16" branch="true" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+            <line number="24" hits="8" branch="true" condition-coverage="50% (3/6)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+            <line number="26" hits="8" branch="false"/>
+            <line number="27" hits="16" branch="true" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="100%"/>
+              </conditions>
+            </line>
+            <line number="28" hits="8" branch="false"/>
+            <line number="30" hits="24" branch="true" condition-coverage="50% (2/4)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+            <line number="31" hits="8" branch="true" condition-coverage="50% (4/8)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+            <line number="35" hits="16" branch="false"/>
+            <line number="36" hits="24" branch="true" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+            <line number="38" hits="4" branch="false"/>
+            <line number="39" hits="4" branch="true" condition-coverage="50% (2/4)">
+              <conditions>
+                <condition number="0" type="jump" coverage="50%"/>
+              </conditions>
+            </line>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
