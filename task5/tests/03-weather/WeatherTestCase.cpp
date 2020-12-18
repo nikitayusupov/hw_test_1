@@ -5,38 +5,48 @@
 #include "WeatherTestCase.h"
 #include "WeatherMock.h"
 
-TEST(WeatherTestCase, BadCityTest) {
-    try {
-        Weather weather;
-        weather.SetApiKey("ee2238d904e2ce9d79ee7c4cd739105f");
+cpr::Response make_fake_response(const std::string& temp, std::int32_t status_code) {
+    cpr::Response response;
+    response.status_code = status_code;
+    response.text = R"({"list" : [{"main": {"temp": )" + temp + R"(}}]})";
+    return response;
+}
 
-        float temperature = weather.GetTemperature("Cherepovetssssss");
-        FAIL() << "Expected std::invalid_argument";
-    }
-    catch(std::invalid_argument const &err) {
-        EXPECT_EQ(err.what(),std::string("Api error. City is bad"));
-    }
-    catch(...) {
-        FAIL() << "Expected std::invalid_argument";
-    }
+TEST(WeatherTestCase, BadCityTest) {
+   WeatherMock weatherMock;
+   cpr::Response response = make_fake_response("228", 404);
+
+   EXPECT_CALL(weatherMock, Get("Cherepovetssssss")).WillOnce(testing::Return(response));
+   ASSERT_THROW(weatherMock.GetTemperature("Cherepovetssssss"), std::invalid_argument);
 };
 
 TEST(WeatherTestCase, AdequateTemperatureTest) {
-    Weather weather;
-    weather.SetApiKey("ee2238d904e2ce9d79ee7c4cd739105f");
+    WeatherMock weatherMock;
+    cpr::Response response = make_fake_response("28", 200);
 
-    float temperature = weather.GetTemperature("Moscow");
-    ASSERT_TRUE(temperature >= -100.0);
+    EXPECT_CALL(weatherMock, Get("Moscow")).WillOnce(testing::Return(response));
+    ASSERT_EQ(28, weatherMock.GetTemperature("Moscow"));
 };
 
 TEST(WeatherTestCase, DiffTest) {
-    Weather weather;
-    weather.SetApiKey("ee2238d904e2ce9d79ee7c4cd739105f");
+    WeatherMock weatherMock;
 
-    std::string diff_1 = weather.GetDifferenceString("Moscow", "London");
-    std::string diff_2 = weather.GetDifferenceString("London", "Moscow");
+    cpr::Response responseMoscow = make_fake_response("28", 200);
+    cpr::Response responseDubai = make_fake_response("58", 200);
 
-    float diff_f_1 = weather.FindDiffBetweenTwoCities("Moscow", "London");
-    float diff_f_2 = weather.FindDiffBetweenTwoCities("London", "Moscow");
-    ASSERT_TRUE(diff_f_1 * diff_f_2 <= 0);
+    EXPECT_CALL(weatherMock, Get("Moscow")).WillRepeatedly(testing::Return(responseMoscow));
+    EXPECT_CALL(weatherMock, Get("Dubai")).WillRepeatedly(testing::Return(responseDubai));
+
+    ASSERT_EQ(30, weatherMock.FindDiffBetweenTwoCities("Dubai", "Moscow"));
+
+    std::string diffString = weatherMock.GetDifferenceString("Dubai", "Moscow");
+    ASSERT_EQ("Weather in Dubai is warmer than in Moscow by 30 degrees", diffString);
+
+    diffString = weatherMock.GetDifferenceString("Moscow", "Dubai");
+    ASSERT_EQ("Weather in Moscow is colder than in Dubai by 30 degrees", diffString);
+};
+
+TEST(WeatherTestCase, SetApiKeyTest) {
+    WeatherMock weatherMock;
+    ASSERT_NO_THROW(weatherMock.SetApiKey("bruh"));
 };
