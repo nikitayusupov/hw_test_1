@@ -22,14 +22,5 @@ TEST(LeapTestCase, Leap) {
 };
 
 TEST(LeapTestCase, InvalidArgument) {
-    try {
-        bool isLeap = IsLeap(-2);
-        FAIL() << "Expected std::invalid_argument";
-    }
-    catch(std::invalid_argument const &err) {
-        EXPECT_EQ(err.what(),std::string("Year must be greater than 0"));
-    }
-    catch(...) {
-        FAIL() << "Expected std::invalid_argument";
-    }
+    ASSERT_THROW(IsLeap(-2), std::invalid_argument);
 };
