@@ -8,6 +8,8 @@
 
 #include "gtest/gtest.h"
 #include <algorithm>
+#include <boost/filesystem.hpp>
+#include <fstream>
 
 TEST(LeapTestCase, NonExistingPath) {
     try {
@@ -23,16 +25,7 @@ TEST(LeapTestCase, NonExistingPath) {
 };
 
 TEST(LeapTestCase, NotADirectoryPath) {
-    try {
-        FileNode node = GetTree("/bin/cat", false);
-        FAIL() << "Expected std::invalid_argument";
-    }
-    catch(std::invalid_argument const &err) {
-        EXPECT_EQ(err.what(),std::string("Path is not directory"));
-    }
-    catch(...) {
-        FAIL() << "Expected std::invalid_argument";
-    }
+    ASSERT_THROW(GetTree("/bin/cat", false), std::invalid_argument);
 };
 
 TEST(LeapTestCase, TestDirsOnly) {
@@ -46,6 +39,17 @@ TEST(LeapTestCase, TestDirsOnly) {
 };
 
 TEST(LeapTestCase, TestNotDirsOnly) {
-    FileNode node = GetTree("/Users/nik", false);
+    boost::filesystem::create_directories("some_test_folder/some_test_subfolder");
+    std::ofstream outfile ("some_test_folder/test.txt");
+    outfile.close();
+
+    FileNode node = GetTree("some_test_folder", false);
     ASSERT_EQ(2, node.children.size());
+
+    node = GetTree("some_test_folder", true);
+    ASSERT_EQ(1, node.children.size());
+
+    boost::filesystem::remove("some_test_folder/some_test_subfolder");
+    boost::filesystem::remove("some_test_folder/test.txt");
+    boost::filesystem::remove("some_test_folder");
 };
